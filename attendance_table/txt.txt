@@ -17,4 +17,9 @@ if year = not leap then;
      check the month. and if the month is feb then;
         +1 should get us to 1st March.  
 
+if(year = leap){
+    get the current day;
+    if the current day +1 = modified date;
+    if(modified date = )
 
+}
