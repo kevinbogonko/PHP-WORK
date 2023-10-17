@@ -1,0 +1,20 @@
+
+For not leap years feb should have 28 days
+For leap years feb should have 29 days
+
+executing functionality for not leap years 28 + 1 should
+get us the last day of feb and an additonal day should lead us 
+to the next month i.e March
+
+executing functionality for leap years 29 + 1 should
+lead us to the next month i.e March
+
+if year = leap then;
+     check the month. and if the month is feb then;
+        28+1 and +1 should get us to 1st March. 
+
+if year = not leap then;
+     check the month. and if the month is feb then;
+        +1 should get us to 1st March.  
+
+
