@@ -1,0 +1,359 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Student Management</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+      .strip {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.75rem auto;
+        /* border: 1px solid #000; */
+      }
+
+      /* Modal inputs */
+
+      .modal-body .form-control{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .modal-body .form-control input, select, textarea{
+        display: block;
+        width: 65%;
+        border: none;
+        background: #e0e0e0;
+        outline: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        padding: 5px;
+      }
+
+
+
+      @media only screen and (max-width: 768px) {
+        .strip {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        table thead {
+          display: none;
+          margin-bottom: 0.55rem;
+          overflow-x: scroll;
+        }
+
+        table tfoot {
+          display: none;
+        }
+
+        table,
+        table tbody,
+        table tbody tr,
+        table tbody tr td {
+          display: block;
+          width: 100%;
+        }
+
+        table tbody tr {
+          margin: 10px 0;
+        }
+
+        tbody tr td {
+          height: 1.5rem;
+          border-bottom: 1px solid #dee2e6;
+        }
+
+        table tbody tr td {
+          background: #fff;
+          text-align: right;
+          padding-left: 50%;
+          position: relative;
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+
+        table td::before {
+          content: attr(data-label);
+          position: absolute;
+          left: 0;
+          width: 50%;
+          text-align: left;
+          padding-left: 15px;
+          font-weight: 500;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container strip">
+      <h3>Student List</h3>
+      <div class="btn-strip">
+        <button
+          type="button"
+          class="btn btn-primary bt"
+          data-bs-toggle="modal"
+          data-bs-target="#addStudentModal"
+        >
+          Add Student <i class="fa fa-user-plus icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade mod"
+      id="addStudentModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addStudentModal">
+              Add Student Details
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="#" class="data-form">
+              <div class="form-control">
+                <label for="first-name">Registration No.:</label>
+                <input
+                  type="text"
+                  name="reg"
+                  class="reg"
+                  id="reg"
+                  placeholder="Enter Registration Number"
+                  required
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="first-name">First Name:</label>
+                <input
+                  type="text"
+                  name="first-name"
+                  class="first-name"
+                  id="first-name"
+                  placeholder="Enter first name"
+                  required
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="middle-name">Middle Name:</label>
+                <input
+                  type="text"
+                  name="middle-name"
+                  class="middle-name"
+                  id="middle-name"
+                  placeholder="Enter middle name"
+                  required
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="first-name">Surname Name:</label>
+                <input
+                  type="text"
+                  name="last-name"
+                  class="last-name"
+                  id="last-name"
+                  placeholder="Enter surname name"
+                  required
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="rad-male">Male:</label>
+                <input
+                  type="radio"
+                  name="rad-male"
+                  id="rad-male"
+                  class="rad-male"
+                  value="Male"
+                />
+                <label for="rad-female">Female:</label>
+                <input
+                  type="radio"
+                  name="rad-female"
+                  id="rad-female"
+                  class="rad-female"
+                  value="Female"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="unique">Unique Number:</label>
+                <input
+                  type="text"
+                  name="unique"
+                  class="unique"
+                  id="unique"
+                  placeholder="Enter unique number"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="forms">Form:</label>
+                <select name="forms" id="forms" form="forms">
+                  <option value="form-one">Select Form</option>
+                </select>
+              </div>
+
+              <div class="form-control">
+                <label for="stream">Stream:</label>
+                <select name="stream" id="stream" form="stream">
+                  <option value="stream-one">Select Stream</option>
+                </select>
+              </div>
+
+              <div class="form-control">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" name="dob" class="dob" id="dob" />
+              </div>
+
+              <div class="form-control">
+                <label for="phone1">Phone Number 1:</label>
+                <input
+                  type="text"
+                  name="phone1"
+                  class="phone1"
+                  id="phone1"
+                  placeholder="Enter phone number 2"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="phone2">Phone Number 2:</label>
+                <input
+                  type="text"
+                  name="phone2"
+                  class="phone2"
+                  id="phone2"
+                  placeholder="Enter phone number 2"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="email">Email:</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="email"
+                  id="email"
+                  placeholder="Enter email"
+                />
+              </div>
+
+              <div class="form-control">
+                <label for="photo">Photo:</label>
+                <input type="file" name="photo" id="photo" class="photo" />
+              </div>
+
+              <div class="form-control">
+                <label for="adress">Address:</label>
+                <textarea
+                  name="address"
+                  id="address"
+                  cols="30"
+                  rows="5"
+                  placeholder="Enter address"
+                ></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!---End of Modal-->
+
+    <!---TABLE PLUGIN-->
+
+    <div class="container">
+      <table id="example" class="display" style="width: 100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Reg. No.:</th>
+            <th>Name</th>
+            <th>Form</th>
+            <th>Stream</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!---php code here-->
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>#</th>
+            <th>Reg. No.:</th>
+            <th>Name</th>
+            <th>Form</th>
+            <th>Stream</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!---TABLE PLUGIN ENDS HERE-->
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+
+
+    <script>
+        new DataTable('#example', {
+        pagingType: 'full_numbers'
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>
+  </body>
+</html>
